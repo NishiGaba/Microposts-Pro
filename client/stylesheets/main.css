@@ -1,0 +1,24 @@
+.post
+{
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+}
+
+.post:last-child
+{
+	border:0;
+}
+
+.navbar
+{
+	border-radius:0px;
+}
+
+.footer-content
+{
+	padding-top: 12px;
+    color: #A29D9D;
+    font-family: sans-serif;
+    font-size: 12px;
+}

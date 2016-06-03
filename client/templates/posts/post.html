@@ -1,0 +1,48 @@
+<template name="posts">
+  {{#if currentUser}}
+  	<!-- Trigger the modal with a button -->
+    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#postModal">Say Something!</button>
+  {{/if}}
+
+  	<!-- Modal -->
+  	<div class="modal fade" id="postModal" role="dialog" aria-labelledby="myPostModalLabel">
+    	<div class="modal-dialog" role="document">
+
+	      	<!-- Modal content-->
+	      	<div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 style="color:red;" class="modal-title" id="myPostModalLabel">Create A Post</h4>
+		        </div>
+		        <div class="modal-body">
+		          	{{#autoForm collection="Posts" id="insertPostForm" type="insert"}}
+                {{> afQuickField name="body" rows=4}}
+                  <button type="submit" class="btn btn-primary">Send</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                {{/autoForm}}
+	        	</div>
+      		</div>
+    	</div>
+  	</div> 
+
+  	<hr>
+
+  {{#if currentUser}}
+    {{#each posts}}
+    	<div class="row post">
+    		<div class="col-md-1">
+    			<img src="{{getProfileImg userId}}" width="100%" height="100%">
+    		</div>
+    		<div class="col-md-11">
+    			<small>Posted By {{username}} at {{createdAt}}</small>
+    			<p>{{body}}</p>
+    		</div>
+    	</div>
+    {{else}}
+      <p>No Posts</p>
+    {{/each}}
+  {{else}}
+    <center><h4 style="color:red;">Aaaaww ,,snap !!!!.</h4></center>
+    <center><h4 style="color:red;">You must have to be logged in first.</h4></center>
+  {{/if}}
+</template>
